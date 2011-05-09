@@ -1,4 +1,6 @@
 AlingnenaRails3::Application.routes.draw do
+  get "products/show"
+
   resources :debts
 
   # The priority is based upon order of creation:
