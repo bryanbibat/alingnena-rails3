@@ -18,5 +18,6 @@
   <b>Stock:</b>
   <%= @product.stock %>
 </p>
-
+<%= link_to('Delete this record', @product,  
+             { :confirm => 'Are you sure?', :method => :delete }) %> <br />
 <%= link_to 'Back to List of Products', products_path %>
