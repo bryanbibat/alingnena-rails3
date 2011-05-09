@@ -1,6 +1,6 @@
 AlingnenaRails3::Application.routes.draw do
   resources :debts
 
-  match('products/:id' => 'products#show', :via => :get) 
+  match 'products/:id' => 'products#show', :via => :get
 
 end
