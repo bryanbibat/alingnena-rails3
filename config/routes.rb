@@ -7,5 +7,6 @@ AlingnenaRails3::Application.routes.draw do
   match 'products/search' => 'products#search', :via => :get, :as => 'search_products'
   match 'products/:id' => 'products#show', :via => :get, :as => 'product'
   match 'products/:id' => 'products#destroy', :via => :delete
-
+  match 'products/:id' => 'products#update', :via => :put
+  match 'products/:id/edit' => 'products#edit', :via => :get, :as => 'edit_product'
 end
