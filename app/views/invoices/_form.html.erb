@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :purchase_id, "Purchase" %><br />
-    <%= f.collection_select :purchase_id, Purchase.all, :id, :description %>
+    <%= f.collection_select :purchase_id, Purchase.all, :id, :description, :prompt => true %>
   </div>
   <div class="field">
     <%= f.label :reference_number %><br />
