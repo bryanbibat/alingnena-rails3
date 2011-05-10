@@ -12,11 +12,14 @@ describe CustomersController do
 
   describe "GET index" do
     it "assigns all customers as @customers" do
-      Customer.stub(:all) { [mock_customer] }
+      Customer.stub(:find_all_by_active).with(true) { [mock_customer] }
       get :index
       assigns(:customers).should eq([mock_customer])
     end
-    pending "should only retrieve active customers"
+    it "should only retrieve active customers" do
+      Customer.should_receive(:find_all_by_active).with(true) { [mock_customer] }
+      get :index
+    end
   end
 
   describe "GET show" do
@@ -29,8 +32,17 @@ describe CustomersController do
     end
 
     describe "when the record is inactive" do
-      pending "redirects to the list"
-      pending "displays a message"
+      it "redirects to the list" do
+        Customer.stub(:find).with("37") { mock_customer(:active? => false) }
+        get :show, :id => "37"
+        response.should redirect_to(customers_url)
+      end
+
+      it "displays a message" do
+        Customer.stub(:find).with("37") { mock_customer(:active? => false) }
+        get :show, :id => "37"
+        flash[:notice].should eq "Record does not exist"
+      end
     end
   end
 
