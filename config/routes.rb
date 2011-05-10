@@ -1,4 +1,6 @@
 AlingnenaRails3::Application.routes.draw do
+  resources :suppliers
+
   resources :purchases do
     resource :invoice
   end
