@@ -1,5 +1,5 @@
-<h1>New Product</h1>
+<h1><%=t 'views.product.header.new' %></h1>
 
-<%= render :partial => "form", :locals => { :product => @product, :button_label => "Create" } %>
+<%= render :partial => "form", :locals => { :product => @product, :button_label => t('views.button.create') } %>
 
-<%= link_to 'Back', products_path %>
+<%= link_to t('views.link.back'), products_path %>
