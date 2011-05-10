@@ -3,6 +3,7 @@ AlingnenaRails3::Application.routes.draw do
 
   resources :purchases do
     resource :invoice
+    resources :line_items
   end
 
   resources :debts
