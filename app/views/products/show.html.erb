@@ -1,23 +1,24 @@
 <p style="color: green"><%= notice %></p>
-<h1>Show Product</h1>
+<h1><%=t "views.product.header.show" %></h1>
 <p>
-  <b>Name:</b>
+  <b><%= label(:product, :name) %>:</b>
   <%= @product.name %>
 </p>
-
 <p>
-  <b>Description:</b>
+  <b><%= label(:product, :description) %>:</b>
   <%= @product.description %>
 </p>
-
 <p>
-  <b>Cost:</b>
-  <%= number_to_currency @product.cost, :unit => 'PhP' %>
+  <b><%= label(:product, :cost) %>:</b>
+  <%= number_to_currency @product.cost %>
 </p>
-
 <p>
-  <b>Stock:</b>
+  <b><%= label(:product, :stock) %>:</b>
   <%= @product.stock %>
+</p>
+<p>
+  <b><%= label(:product, :created_at) %>:</b>
+  <%=l @product.created_at, :format => :short %>
 </p>
 
 <h2>Related Purchases</h2>
