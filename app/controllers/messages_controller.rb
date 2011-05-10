@@ -13,11 +13,7 @@ class MessagesController < ApplicationController
 
   def message_table
     respond_to do |format|
-      format.js do
-        render :update do |page|
-          page.replace_html :message_list, :partial => Message.order("created_at DESC")
-        end
-      end
+      format.js
       format.html { render :partial => Message.order("created_at DESC") }
     end
   end
@@ -36,11 +32,7 @@ class MessagesController < ApplicationController
         @messages = Message.all(:order => "created_at DESC")
         format.html { render :action => "index" }
         format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
-        format.js do
-          render :update do |page|
-            page.replace_html :notice, 'There was an error in creating the message.'
-          end
-        end
+        format.js {  render :text => "$('#notice').show().html('There was an error in creating the message.')" }
       end
     end
   end

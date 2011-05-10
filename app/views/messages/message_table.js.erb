@@ -1,0 +1,3 @@
+$("#message_list").html("<%= escape_javascript(
+  render :partial => Message.all(:order => "created_at desc") ) %>");
+
