@@ -1,4 +1,8 @@
 AlingnenaRails3::Application.routes.draw do
+  resources :invoices
+
+  resources :purchases
+
   resources :debts
 
   resources :products do 
