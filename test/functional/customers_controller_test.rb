@@ -12,6 +12,12 @@ class CustomersControllerTest < ActionController::TestCase
     assert_nil assigns(:customers).detect { |customer| !customer.active? }, "Only active customers should be retrieved"
   end
 
+  test "should not display active column" do
+    get :index
+    assert_select "tr>th", :text => "Active", :count => 0
+    assert_select "tr>td", :text => "true", :count => 0
+  end
+
   test "should get new" do
     get :new
     assert_response :success
