@@ -1,4 +1,6 @@
 AlingnenaRails3::Application.routes.draw do
+  resources :customers
+
   resources :messages do
     collection do
       get "message_table"
