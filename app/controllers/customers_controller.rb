@@ -2,7 +2,7 @@ class CustomersController < ApplicationController
   # GET /customers
   # GET /customers.xml
   def index
-    @customers = Customer.all
+    @customers = Customer.find_all_by_active(true)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,9 +15,15 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @customer }
+    if @customer.active?
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @customer }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to customers_url, :notice => "Record does not exist" }
+      end
     end
   end
 
