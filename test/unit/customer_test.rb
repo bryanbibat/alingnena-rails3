@@ -6,4 +6,16 @@ class CustomerTest < ActiveSupport::TestCase
     customer.reload
     assert customer.active?
   end
+
+  test "should not delete record from database when destroyed" do
+    customer = customers :active
+    customer.destroy
+    assert !customer.destroyed?
+  end
+
+  test "should deactivate record when destroyed" do
+    customer = customers :active
+    customer.destroy
+    assert !customer.active?
+  end
 end

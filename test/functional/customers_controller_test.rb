@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CustomersControllerTest < ActionController::TestCase
   setup do
-    @customer = customers(:one)
+    @customer = customers(:active)
   end
 
   test "should get index" do
@@ -40,7 +40,7 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   test "should destroy customer" do
-    assert_difference('Customer.count', -1) do
+    assert_difference('Customer.find_all_by_active(true).count', -1) do
       delete :destroy, :id => @customer.to_param
     end
 
